@@ -20,6 +20,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
+import jp.line.android.sdk.LineSdkContext;
 import jp.line.android.sdk.LineSdkContextManager;
 import jp.line.android.sdk.api.ApiClient;
 import jp.line.android.sdk.api.ApiRequestFuture;
@@ -62,7 +63,9 @@ public class HomeActivity extends Activity {
 	@OnClick(R.id.login_button)
 	public void login() {
 		LineAuthManager authManager = LineSdkContextManager.getSdkContext().getAuthManager();
-		authManager.login(this).addFutureListener(
+
+//		authManager.login(this).addFutureListener(
+		authManager.loginByAccount(this).addFutureListener(
 				new LineLoginFutureListener() {
 					@Override
 					public void loginComplete(LineLoginFuture future) {
